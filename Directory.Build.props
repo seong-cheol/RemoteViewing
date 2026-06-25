@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)..\LocalPackages\</PackageOutputPath>
+  </PropertyGroup>
+</Project>
