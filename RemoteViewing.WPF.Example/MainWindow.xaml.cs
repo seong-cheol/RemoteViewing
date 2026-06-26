@@ -146,6 +146,7 @@ public partial class MainWindow : Window
 #pragma warning restore IDE1006 // Naming Styles
     {
         btnConnect.Content = "Close";
+        vncControl.Focus();
     }
 
 #pragma warning disable IDE1006 // Naming Styles
@@ -161,6 +162,19 @@ public partial class MainWindow : Window
     private void vncControl_ConnectionFailed(object sender, EventArgs e)
 #pragma warning restore IDE1006 // Naming Styles
     {
+    }
+
+    private void chkAllowInput_Changed(object sender, RoutedEventArgs e)
+    {
+        if (vncControl == null) return; // InitializeComponent 중 조기 호출 방지
+
+        vncControl.AllowInput = chkAllowInput.IsChecked == true;
+        vncControl.AllowRemoteCursor = chkAllowInput.IsChecked == true;
+
+        if (vncControl.AllowInput)
+        {
+            vncControl.Focus();
+        }
     }
 
     private void StatisticsTimer_Tick(object sender, EventArgs e)
